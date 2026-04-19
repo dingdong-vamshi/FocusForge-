@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusForge Setup</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; padding: 16px; width: 300px; background: #0a0a0a; color: white; margin: 0; }
+        h3 { margin-top: 0; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+        .input-group { margin-bottom: 12px; }
+        label { display: block; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 4px; color: #a1a1aa; }
+        input { width: 100%; box-sizing: border-box; background: #171717; border: 1px solid #333; color: white; padding: 8px; border-radius: 6px; }
+        input:focus { outline: none; border-color: #a855f7; }
+        button { width: 100%; background: white; color: black; font-weight: bold; padding: 10px; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #f0f0f0; }
+        #status { font-size: 12px; margin-top: 8px; text-align: center; height: 14px; color: #10b981; }
+        .recording { display: inline-block; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        FocusForge
+    </h3>
+    
+    <div id="setup-view">
+        <p style="font-size: 13px; color: #a1a1aa; line-height: 1.4; margin-bottom: 16px;">Enter your authentication details to sync real-time tracking with your dashboard.</p>
+        
+        <div class="input-group">
+            <label>API URL</label>
+            <input type="text" id="apiUrl" value="https://focusforge-3000.onrender.com/api" placeholder="e.g. http://localhost:5005/api">
+        </div>
+        
+        <div class="input-group">
+            <label>Auth Token</label>
+            <input type="password" id="token" placeholder="Paste JWT token here...">
+        </div>
+        
+        <button id="saveBtn">Save & Start Tracking</button>
+    </div>
+
+    <div id="active-view" style="display: none; text-align: center; padding: 20px 0;">
+        <div style="font-size: 32px; margin-bottom: 10px;"><span class="recording"></span></div>
+        <div style="font-weight: bold;">Tracking Active</div>
+        <p style="font-size: 12px; color: #a1a1aa;">Logging your domains securely.</p>
+        <button id="disconnectBtn" style="margin-top: 15px; background: #27272a; color: white;">Disconnect</button>
+    </div>
+
+    <div id="status"></div>
+    <script src="popup.js"></script>
+</body>
+</html>

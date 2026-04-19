@@ -2,26 +2,26 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 263.4 70% 50.4%;
+    --background: 230 15% 5%;
+    --foreground: 210 40% 98%;
+    --card: 230 15% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 230 15% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 265 89% 65%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.75rem;
+    --secondary: 230 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 230 15% 15%;
+    --muted-foreground: 230 15% 65%;
+    --accent: 265 89% 65%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 230 15% 20%;
+    --input: 230 15% 15%;
+    --ring: 265 89% 65%;
+    --radius: 1rem;
   }
 }
 
@@ -29,13 +29,22 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-image: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15), rgba(0, 0, 0, 0) 50%);
+  background-attachment: fixed;
 }
 
 .glass-morphism {
-  background: rgba(23, 23, 23, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 25, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-morphism:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
 }
 
 .gradient-text {

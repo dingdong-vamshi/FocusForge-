@@ -181,9 +181,10 @@ const Dashboard = () => {
                     </div>
                 </motion.div>
 
-                {/* AI Insights Panel */}
+                {/* Column for Insights and Distractions */}
                 <motion.div variants={item} className="xl:col-span-1 flex flex-col gap-6">
-                    <div className="glass-morphism p-8 rounded-3xl flex-1">
+                    {/* Focus Assistant */}
+                    <div className="glass-morphism p-8 rounded-3xl">
                         <h3 className="text-sm uppercase tracking-widest font-bold text-muted-foreground mb-6 flex items-center gap-2">
                             <Zap className="w-4 h-4 text-yellow-500" /> Focus Assistant
                         </h3>
@@ -197,6 +198,26 @@ const Dashboard = () => {
                                 <div className="text-center p-8 bg-white/5 rounded-2xl border border-white/5">
                                     <p className="text-muted-foreground text-sm">Gathering behavioral patterns...</p>
                                 </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Top Distractions Bar Chart */}
+                    <div className="glass-morphism p-8 rounded-3xl flex-1 min-h-[300px]">
+                        <h3 className="text-sm uppercase tracking-widest font-bold text-muted-foreground mb-6 flex items-center gap-2">
+                            <AlertCircle className="w-4 h-4 text-red-500" /> Top Distractions
+                        </h3>
+                        <div className="h-[200px] w-full">
+                            <ResponsiveContainer>
+                                <BarChart layout="vertical" data={stats.topDistractions || []} margin={{ left: -20, right: 20 }}>
+                                    <XAxis type="number" hide />
+                                    <YAxis dataKey="domain" type="category" stroke="#888" fontSize={11} tickLine={false} axisLine={false} width={100} />
+                                    <Tooltip cursor={{fill: 'transparent'}} contentStyle={{ background: 'rgba(20,20,25,0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }} />
+                                    <Bar dataKey="duration" fill="#ef4444" radius={[0, 4, 4, 0]} barSize={12} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                            {(stats.topDistractions || []).length === 0 && (
+                                <p className="text-center text-muted-foreground text-xs mt-4">Clean slate! No major distractions.</p>
                             )}
                         </div>
                     </div>

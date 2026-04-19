@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+let baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api';
+
+// Auto-append '/api' if the user forgot to add it in their environment variables (like in Vercel)
+if (import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.endsWith('/api')) {
+    baseURL = import.meta.env.VITE_API_URL.replace(/\/$/, '') + '/api';
+}
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+    baseURL,
 });
 
 api.interceptors.request.use((config) => {

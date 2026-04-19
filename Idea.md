@@ -17,17 +17,15 @@ There is no unified system that:
 * gives insights
 * helps users change behavior
 
-FocusForge solves this problem by acting as a behavioral analytics system rather than just a timer or checklist app.
+FocusForge solves this problem by acting as a behavioral analytics system rather than just a timer or checklist app. It now includes a specialized browser extension for real-time activity capture.
 
 ---
 
 ## 2. Project Overview
 
-FocusForge is a full-stack web platform that tracks user activity, analyzes productivity patterns, and helps users build better digital habits using goals, alerts, and reports.
+FocusForge is a full-stack platform that tracks user activity, analyzes productivity patterns, and helps users build better digital habits. 
 
-The system collects user activity data, categorizes it, calculates productivity scores, and provides actionable insights to improve focus and time management.
-
-In the future, the system can also integrate with a browser extension to automatically capture screen activity.
+The system collects user activity data via a Chrome Extension, categorizes it, calculates productivity scores, and provides actionable insights to improve focus and time management.
 
 ---
 
@@ -41,16 +39,18 @@ In the future, the system can also integrate with a browser extension to automat
 
 ### Activity Tracking
 
+* Real-time automated tracking via Chrome Extension
 * Track time spent on websites/apps
 * Automatic categorization (learning, social media, entertainment, productivity)
 * Store activity sessions
 
 ### Analytics Dashboard
 
+* High-fidelity real-time dashboard
 * Daily and weekly reports
 * Category-wise time distribution
 * Productivity score calculation
-* Most used domains
+* Most used domains and distractions
 
 ### Goals & Habit Control
 
@@ -62,8 +62,8 @@ In the future, the system can also integrate with a browser extension to automat
 ### Alerts & Interventions
 
 * Warning alerts when limits are exceeded
+* AI-driven Focus Assistant (Insights & Recommendations)
 * Reminders to take breaks
-* Productivity notifications
 
 ### Reports
 
@@ -75,13 +75,14 @@ In the future, the system can also integrate with a browser extension to automat
 
 ## 4. Scope
 
-The system will include:
+The system includes:
 
-* REST API backend
+* REST API backend (Node.js/Express)
 * MongoDB database
 * React frontend dashboard
+* Chrome Extension for real-time tracking
 
-The main focus of the project is backend architecture, data modeling, and system design.
+The project demonstrates real-world backend architecture, system design, and behavioral data analytics.
 
 ---
 

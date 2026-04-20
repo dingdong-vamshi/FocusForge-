@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Middlewares
 app.use(cors({
-    origin: (process.env.CLIENT_URL || 'http://localhost:5173').trim(),
+    origin: true, // This safely reflects the request origin, allowing Vercel preview URLs and localhost to work seamlessly
     credentials: true
 }));
 app.use(helmet({

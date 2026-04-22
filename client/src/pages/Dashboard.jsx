@@ -44,7 +44,13 @@ const Dashboard = () => {
                 setLoading(false);
             }
         };
+
+        // Initial fetch
         fetchStats();
+
+        // Real-time polling every 5 seconds
+        const intervalId = setInterval(fetchStats, 5000);
+        return () => clearInterval(intervalId); // Cleanup on unmount
     }, []);
 
     if (loading) return (
@@ -74,9 +80,9 @@ const Dashboard = () => {
                     </motion.div>
                 </div>
                 <div className="flex flex-wrap gap-4">
-                    <StatBox icon={<Clock />} label="Total Recorded" value={`${stats.totalTime}m`} color="text-blue-400" />
-                    <StatBox icon={<Zap />} label="Deep Work" value={`${stats.productiveTime}m`} color="text-purple-400" />
-                    <StatBox icon={<AlertCircle />} label="Distraction" value={`${stats.distractionTime}m`} color="text-red-400" />
+                    <StatBox icon={<Clock />} label="Total Recorded" value={`${(stats.totalTime || 0).toFixed(2)}m`} color="text-blue-400" />
+                    <StatBox icon={<Zap />} label="Deep Work" value={`${(stats.productiveTime || 0).toFixed(2)}m`} color="text-purple-400" />
+                    <StatBox icon={<AlertCircle />} label="Distraction" value={`${(stats.distractionTime || 0).toFixed(2)}m`} color="text-red-400" />
                 </div>
             </motion.header>
 

@@ -44,7 +44,7 @@ function logCurrentActivity(endTime = new Date()) {
     if (!currentTabInfo || !currentTabInfo.domain) return;
     
     const durationMs = endTime - currentTabInfo.startTime;
-    if (durationMs < 5000) return; // Ignore very brief domain visits
+    if (durationMs < 2000) return; // Ignore very brief domain visits
 
     const activityData = {
         domain: currentTabInfo.domain,
@@ -57,6 +57,29 @@ function logCurrentActivity(endTime = new Date()) {
     sendActivityToServer(activityData);
     currentTabInfo = null;
 }
+
+// LIVE PULSE TRACKING: Stream data to the server every 5 seconds without waiting for tab changes
+function logPulseActivity(endTime) {
+    if (!currentTabInfo || !currentTabInfo.domain) return;
+    const durationMs = endTime - currentTabInfo.startTime;
+    if (durationMs < 2000) return;
+
+    const activityData = {
+        domain: currentTabInfo.domain,
+        title: currentTabInfo.title,
+        category: categorizeDomain(currentTabInfo.domain),
+        startTime: currentTabInfo.startTime.toISOString(),
+        endTime: endTime.toISOString()
+    };
+    sendActivityToServer(activityData);
+    
+    // Keep tracking the same domain by rolling the start time forward
+    currentTabInfo.startTime = endTime;
+}
+
+setInterval(() => {
+    if (currentTabInfo) logPulseActivity(new Date());
+}, 5000);
 
 chrome.tabs.onActivated.addListener(async (activeInfo) => {
     logCurrentActivity(); // Log previous tab before switching

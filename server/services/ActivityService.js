@@ -17,7 +17,7 @@ class ActivityService {
 
     calculateDuration(start, end) {
         const diff = new Date(end) - new Date(start);
-        return Math.floor(diff / 60000); // ms to minutes
+        return Number((diff / 60000).toFixed(2)); // Use exact decimal minutes instead of rounding to 0 for short test sessions
     }
 
     async getSessions(userId) {

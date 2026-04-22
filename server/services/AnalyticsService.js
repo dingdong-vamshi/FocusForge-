@@ -51,7 +51,7 @@ class AnalyticsService {
         }
         
         if (topDistractions.length > 0) {
-            recommendations.push({ type: 'danger', text: `Your biggest time sink is ${topDistractions[0].domain} (${topDistractions[0].duration}m). Consider setting a site blocker.`});
+            recommendations.push({ type: 'danger', text: `Your biggest time sink is ${topDistractions[0].domain} (${topDistractions[0].duration.toFixed(2)}m). Consider setting a site blocker.`});
         }
 
         return { totalTime, productiveTime, distractionTime, breakdown, hourlyHeatmap: hourlyMap, topDistractions, recommendations };
